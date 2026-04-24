@@ -1,6 +1,6 @@
 import unittest
 from textnode import TextNode, TextType
-from split_nodes_delimiter import split_nodes_delimiter
+from inline_markdown import split_nodes_delimiter
 
 class TestSplitNodesDelimiter(unittest.TestCase):
     def test_split_nodes_delimiter_code(self):
@@ -22,7 +22,7 @@ class TestSplitNodesDelimiter(unittest.TestCase):
             new_nodes,
             [
                 TextNode("This is text with a ", TextType.TEXT),
-                TextNode("bolded", TextType.BOLD),
+                TextNode("bolded",split_nodes_delimiter TextType.BOLD),
                 TextNode(" word", TextType.TEXT),
             ],
         )
