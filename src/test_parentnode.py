@@ -57,3 +57,6 @@ class TestParentNode(unittest.TestCase):
         node.children = None  # Manually set to None to test
         with self.assertRaises(ValueError):
             node.to_html()
+
+if __name__ == "__main__":
+    unittest.main()

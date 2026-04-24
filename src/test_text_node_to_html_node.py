@@ -37,3 +37,7 @@ class TestTextNodeToHtmlNode(unittest.TestCase):
         text_node = TextNode("An image", TextType.IMAGE, "https://example.com/image.png")
         html_node = text_node_to_html_node(text_node)
         self.assertEqual(html_node.to_html(), '<img src="https://example.com/image.png" alt="An image"></img>')
+        
+        
+if __name__ == "__main__":
+    unittest.main()

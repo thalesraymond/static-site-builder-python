@@ -49,3 +49,7 @@ class TestTextNode(unittest.TestCase):
     def test_default_url(self):
         node = TextNode("This is a text node")
         self.assertIsNone(node.url)
+        
+        
+if __name__ == "__main__":
+    unittest.main()

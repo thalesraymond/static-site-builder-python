@@ -17,3 +17,6 @@ class TestLeafNode(unittest.TestCase):
             repr(node), "HTMLNode(p, Hello, world!, children: None, {'class': 'greeting'})"
         )
         
+        
+if __name__ == "__main__":
+    unittest.main()
