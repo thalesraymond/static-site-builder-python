@@ -22,7 +22,7 @@ class TestSplitNodesDelimiter(unittest.TestCase):
             new_nodes,
             [
                 TextNode("This is text with a ", TextType.TEXT),
-                TextNode("bolded",split_nodes_delimiter TextType.BOLD),
+                TextNode("bolded", TextType.BOLD),
                 TextNode(" word", TextType.TEXT),
             ],
         )
