@@ -9,24 +9,6 @@ class BlockType(Enum):
     unordered_list = "unordered_list"
     ordered_list = "ordered_list"
     
-    
-# def markdown_block_to_html_node(block):
-#     block_type = block_to_block_type(block)
-#     if block_type == BlockType.heading:
-#         return heading_block_to_html_node(block)
-#     elif block_type == BlockType.code:
-#         return code_block_to_html_node(block)
-#     elif block_type == BlockType.quote:
-#         return quote_block_to_html_node(block)
-#     elif block_type == BlockType.unordered_list:
-#         return unordered_list_block_to_html_node(block)
-#     elif block_type == BlockType.ordered_list:
-#         return ordered_list_block_to_html_node(block)
-#     else:
-#         return paragraph_block_to_html_node(block)
-
-# def heading_block_to_html_node(block):
-    
 
 def markdown_to_blocks(markdown):
     lines = markdown.split("\n\n")

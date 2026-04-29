@@ -1,6 +1,6 @@
 import re
 
-from src.textnode import TextNode, TextType
+from src.models.text_node import TextNode, TextType
 
 
 def extract_markdown_images(text):

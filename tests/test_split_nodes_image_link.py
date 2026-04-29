@@ -1,7 +1,7 @@
 import unittest
 
 from src.markdown.inline import split_nodes_image, split_nodes_link
-from src.textnode import TextNode, TextType
+from src.models.text_node import TextNode, TextType
 
 
 class TestSplitNodesImageLink(unittest.TestCase):

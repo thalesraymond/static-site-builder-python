@@ -1,7 +1,27 @@
 from src.markdown.blocks import block_to_block_type, markdown_to_blocks, BlockType
 from src.markdown.inline import text_to_textnodes
-from src.textnode import text_node_to_html_node, TextNode, TextType
-from src.htmlnode import ParentNode
+from src.models.text_node import TextNode, TextType
+from src.models.html_node import ParentNode, LeafNode
+
+
+def text_node_to_html_node(text_node):
+    match text_node.text_type:
+        case TextType.TEXT:
+            return LeafNode(None, text_node.text)
+        case TextType.BOLD:
+            return ParentNode("b", [LeafNode(None, text_node.text)])
+        case TextType.ITALIC:
+            return ParentNode("i", [LeafNode(None, text_node.text)])
+        case TextType.CODE:
+            return ParentNode("code", [LeafNode(None, text_node.text)])
+        case TextType.LINK:
+            return ParentNode(
+                "a", [LeafNode(None, text_node.text)], {"href": text_node.url}
+            )
+        case TextType.IMAGE:
+            return LeafNode("img", "", {"src": text_node.url, "alt": text_node.text})
+        case _:
+            raise ValueError(f"Unknown text type: {text_node.text_type}")
 
 
 def markdown_to_html_node(markdown):

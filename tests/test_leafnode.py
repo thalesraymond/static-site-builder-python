@@ -1,6 +1,6 @@
 import unittest
 
-from src.htmlnode import LeafNode
+from src.models.html_node import LeafNode
 
 
 class TestLeafNode(unittest.TestCase):

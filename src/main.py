@@ -1,4 +1,4 @@
-from src.textnode import TextNode, TextType
+from src.models.text_node import TextNode, TextType
 
 
 print("Hello World!")
