@@ -1,6 +1,6 @@
 import unittest
 
-from src.markdown.utils import extract_markdown_images, extract_markdown_links
+from src.markdown.inline import extract_markdown_images, extract_markdown_links
 
 
 class TestRegexUtils(unittest.TestCase):
