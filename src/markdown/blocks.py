@@ -10,6 +10,16 @@ class BlockType(Enum):
     ordered_list = "ordered_list"
 
 
+def markdown_to_blocks(markdown):
+    lines = markdown.split("\n\n")
+    blocks = []
+    for line in lines:
+        if line.strip() == "":
+            continue
+        blocks.append(line.strip())
+    return blocks
+
+
 def block_to_block_type(block):
     lines = block.split("\n")
 
@@ -26,8 +36,6 @@ def block_to_block_type(block):
     if len(lines) > 1 and lines[0].startswith("```") and lines[-1].startswith("```"):
         return BlockType.code
 
-    # Handle single line code block case if necessary, but according to rules
-    # it usually starts and ends with ```. If the test says ```code``` is code:
     if block.startswith("```") and block.endswith("```") and len(block) >= 6:
         return BlockType.code
 

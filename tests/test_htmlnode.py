@@ -1,6 +1,6 @@
 import unittest
 
-from htmlnode import HtmlNode
+from src.htmlnode import HtmlNode
 
 
 class TestHtmlNode(unittest.TestCase):
@@ -27,7 +27,8 @@ class TestHtmlNode(unittest.TestCase):
     def test_repr(self):
         node = HtmlNode("p", "Hello, world!", None, {"class": "greeting"})
         self.assertEqual(
-            repr(node), "HTMLNode(p, Hello, world!, children: None, {'class': 'greeting'})"
+            repr(node),
+            "HTMLNode(p, Hello, world!, children: None, {'class': 'greeting'})",
         )
 
     def test_values(self):

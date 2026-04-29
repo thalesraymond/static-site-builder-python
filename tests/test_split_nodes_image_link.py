@@ -1,8 +1,10 @@
 import unittest
-from inline_markdown import split_nodes_image, split_nodes_link
-from textnode import TextNode, TextType
 
-class TestSplitNodesImage(unittest.TestCase):
+from src.markdown.inline import split_nodes_image, split_nodes_link
+from src.textnode import TextNode, TextType
+
+
+class TestSplitNodesImageLink(unittest.TestCase):
     def test_split_images(self):
 
         node = TextNode(
@@ -175,7 +177,5 @@ class TestSplitNodesLink(unittest.TestCase):
         )
 
 
-      
-      
 if __name__ == "__main__":
     unittest.main()

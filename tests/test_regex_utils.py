@@ -1,5 +1,7 @@
 import unittest
-from regex_utils import extract_markdown_images, extract_markdown_links
+
+from src.markdown.utils import extract_markdown_images, extract_markdown_links
+
 
 class TestRegexUtils(unittest.TestCase):
     def test_extract_markdown_images(self):
@@ -41,6 +43,7 @@ class TestRegexUtils(unittest.TestCase):
         self.assertListEqual([("image", "img_url")], image_matches)
         # Note: current link regex matches images too
         self.assertListEqual([("image", "img_url"), ("link", "link_url")], link_matches)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,6 +1,8 @@
 import unittest
-from textnode import TextNode, TextType
-from inline_markdown import split_nodes_delimiter
+
+from src.markdown.inline import split_nodes_delimiter
+from src.textnode import TextNode, TextType
+
 
 class TestSplitNodesDelimiter(unittest.TestCase):
     def test_split_nodes_delimiter_code(self):
@@ -26,9 +28,11 @@ class TestSplitNodesDelimiter(unittest.TestCase):
                 TextNode(" word", TextType.TEXT),
             ],
         )
-    
+
     def test_split_nodes_delimiter_bold_multiple(self):
-        node = TextNode("This is text with a **bolded** and another **bolded** word", TextType.TEXT)
+        node = TextNode(
+            "This is text with a **bolded** and another **bolded** word", TextType.TEXT
+        )
         new_nodes = split_nodes_delimiter([node], "**", TextType.BOLD)
         self.assertEqual(
             new_nodes,
@@ -76,6 +80,7 @@ class TestSplitNodesDelimiter(unittest.TestCase):
         node = TextNode("This is text with a `code block word", TextType.TEXT)
         with self.assertRaises(ValueError):
             split_nodes_delimiter([node], "`", TextType.CODE)
+
 
 if __name__ == "__main__":
     unittest.main()
