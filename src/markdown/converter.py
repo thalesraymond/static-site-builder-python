@@ -138,6 +138,6 @@ def generate_page(from_path, template_path, dest_path):
     with open(template_path, "r") as f:
         template = f.read()
     title = extract_title(markdown) or "Untitled"
-    final_html = template.replace("{{title}}", title).replace("{{content}}", html)
+    final_html = template.replace("{{ Title }}", title).replace("{{ Content }}", html)
     with open(dest_path, "w") as f:
         f.write(final_html)

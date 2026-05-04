@@ -37,7 +37,9 @@ def main():
     # generate pages from content
 
     content_path = os.path.join(root_dir, "content")
+    print(f"Generating pages from content in {content_path}...")
     for filename in os.listdir(content_path):
+        print(f"Processing {filename}...")
         if filename.endswith(".md"):
             from_path = os.path.join(content_path, filename)
             template_path = os.path.join(root_dir, "template.html")
