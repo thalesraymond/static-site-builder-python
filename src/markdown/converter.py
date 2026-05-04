@@ -119,3 +119,25 @@ def paragraph_to_html_node(block):
     paragraph = " ".join(lines)
     children = text_to_children(paragraph)
     return ParentNode("p", children)
+
+
+def extract_title(markdown):
+    blocks = markdown_to_blocks(markdown)
+    for block in blocks:
+        if block.startswith("# "):
+            return block[2:]
+    return None
+
+
+def generate_page(from_path, template_path, dest_path):
+    print(f"Generating page from {from_path} to {dest_path} using template {template_path}")
+    with open(from_path, "r") as f:
+        markdown = f.read()
+    html_node = markdown_to_html_node(markdown)
+    html = html_node.to_html()
+    with open(template_path, "r") as f:
+        template = f.read()
+    title = extract_title(markdown) or "Untitled"
+    final_html = template.replace("{{title}}", title).replace("{{content}}", html)
+    with open(dest_path, "w") as f:
+        f.write(final_html)

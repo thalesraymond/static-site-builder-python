@@ -1,6 +1,8 @@
 import os
 import shutil
+from pathlib import Path
 
+from src.markdown.converter import generate_page
 
 def copy_recursive(src, dest):
     if not os.path.exists(dest):
@@ -18,7 +20,10 @@ def copy_recursive(src, dest):
 
 
 def main():
-    root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    #root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    path = Path(__file__).resolve()
+    root_dir = str(path.parent.parent.resolve().absolute())
+    print(root_dir)
     static_path = os.path.join(root_dir, "static")
     public_path = os.path.join(root_dir, "public")
 
@@ -28,6 +33,17 @@ def main():
 
     print(f"Copying static files from {static_path} to {public_path}...")
     copy_recursive(static_path, public_path)
+    
+    # generate pages from content
+
+    content_path = os.path.join(root_dir, "content")
+    for filename in os.listdir(content_path):
+        if filename.endswith(".md"):
+            from_path = os.path.join(content_path, filename)
+            template_path = os.path.join(root_dir, "template.html")
+            dest_filename = filename[:-3] + ".html"
+            dest_path = os.path.join(public_path, dest_filename)
+            generate_page(from_path, template_path, dest_path)
 
 if __name__ == "__main__":
     main()
