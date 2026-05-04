@@ -39,9 +39,9 @@ def block_to_block_type(block):
     if block.startswith("```") and block.endswith("```") and len(block) >= 6:
         return BlockType.code
 
-    if block.startswith("> "):
+    if block.startswith(">"):
         for line in lines:
-            if not line.startswith("> "):
+            if not line.startswith(">"):
                 return BlockType.paragraph
         return BlockType.quote
 
