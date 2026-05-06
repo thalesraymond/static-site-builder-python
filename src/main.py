@@ -44,12 +44,13 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_public, b
 def main():
     # root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     base_path = sys.argv[1] if len(sys.argv) > 1 else "/"
+    
     path = Path(__file__).resolve()
     root_dir = str(path.parent.parent.resolve().absolute())
 
     print(root_dir)
     static_path = os.path.join(root_dir, "static")
-    public_path = os.path.join(root_dir, "public")
+    public_path = os.path.join(root_dir, "docs")
 
     print(f"Cleaning public directory at {public_path}...")
     if os.path.exists(public_path):
